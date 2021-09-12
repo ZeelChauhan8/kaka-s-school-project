@@ -23,7 +23,7 @@ class _Login_PageState extends State<Login_Page> {
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
                 child: Container(
-                    width: 200,
+                    width: 250,
                     height: 150,
                     /*decoration: BoxDecoration(
                         color: Colors.red,
@@ -31,39 +31,50 @@ class _Login_PageState extends State<Login_Page> {
                     child: Image.asset('images/logo.png')),
               ),
             ),
-            Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextFormField(
-                controller: _email,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    labelText: 'Email',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
-                validator: (val)
-                {
-                  if(val!.isEmpty){
-                    return "Email id cannot be null";
-                  }
-                  return null;
-                },
+            //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              Container(
+                width:350,
+                child: TextFormField(
+                  controller: _email,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.only(
+                          left: 5, bottom: 11, top: 11, right: 5),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      prefixIcon: Icon(Icons.email_outlined),
+                      labelText: 'Email',
+                      hintText: 'Enter valid email id as abc@gmail.com'),
+                  validator: (val)
+                  {
+                    if(val!.isEmpty){
+                      return "Email id cannot be null";
+                    }
+                    return null;
+                  },
+                ),
               ),
+            SizedBox(
+              height:20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+            Container(
+              width:350,
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
                 controller: _password,
                 obscureText: true,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
+                    isDense: true,
+                    contentPadding: EdgeInsets.only(
+                        left: 5, bottom: 11, top: 11, right: 5),
                     labelText: 'Password',
+                    prefixIcon: Icon(Icons.vpn_key_outlined),
                     suffixIcon: IconButton(icon:Icon(Icons.visibility),onPressed: (){
                       print("X");
                     },),
@@ -77,9 +88,10 @@ class _Login_PageState extends State<Login_Page> {
                 },
               ),
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: FlatButton(
+            Container(
+              width: 350,
+              alignment: Alignment.bottomRight,
+              child:FlatButton(
                 onPressed: (){
                   //TODO FORGOT PASSWORD SCREEN GOES HERE
                 },
@@ -89,6 +101,7 @@ class _Login_PageState extends State<Login_Page> {
                 ),
               ),
             ),
+            SizedBox(height:10),
             Container(
               height: 50,
               width: 250,
@@ -116,7 +129,8 @@ class _Login_PageState extends State<Login_Page> {
             SizedBox(
               height: 130,
             ),
-            Text('New User? Create Account')
+            Text('New User? Create Account'),
+
           ],
         ),
       ),
