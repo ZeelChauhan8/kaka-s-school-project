@@ -11,8 +11,11 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    final bool displayMobileLayout = MediaQuery.of(context).size.width < 600;
     return Scaffold(
-      drawer: Drawer_Info(),
+        drawer: displayMobileLayout
+            ? const Drawer_Info()
+            : null,
       appBar: AppBar(title:Text("Profile"),backgroundColor: Colors.cyan,
       actions: [
         IconButton(icon:Icon(Icons.login),onPressed: (){

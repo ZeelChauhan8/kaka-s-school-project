@@ -20,18 +20,21 @@ class _Student_ListState extends State<Student_List> {
       student = data['Student'];
     });
   }
-
   @override
   Widget build(BuildContext context) {
+
     fetch_stu();
     return Scaffold(
-
         appBar: AppBar(
           title: Text("Student Details"),
           backgroundColor: Colors.cyan,
+          actions: [
+            IconButton(icon:Icon(Icons.search),onPressed: (){
+            },),
+          ],
         ),
         body: Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(15),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: SingleChildScrollView(
@@ -233,3 +236,7 @@ class _Student_ListState extends State<Student_List> {
             )));
   }
 }
+
+
+
+

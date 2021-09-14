@@ -28,7 +28,7 @@ class _Splash_screenState extends State<Splash_screen> {
     Timer(
         Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Login_Page())));
+            MaterialPageRoute(builder: (BuildContext context) => MyApp())));
   }
   @override
   Widget build(BuildContext context) {
@@ -67,34 +67,54 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   var _page=[Dashboard(),Search(),Student_List(),Profile()];
   int _SelectedIndex=0;
+  late bool permanentlyDisplay;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _page[_SelectedIndex],
-      drawer: Drawer_Info(),
-      bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Colors.cyan,
-        activeColor: Colors.white,
-        style: TabStyle.reactCircle,
-        items:[
-          TabItem(icon: Icon(Icons.dashboard,color: Colors.red,),title: "DashBoard",),
-          TabItem(icon: Icon(Icons.search,color: Colors.deepOrange,),title: "Search",),
-          TabItem(icon: Icon(Icons.list_alt,color: Colors.blue,),title: "StudentList",),
-          TabItem(icon: Icon(Icons.supervised_user_circle,color: Colors.cyanAccent,),title: "Profile",)
-        ],
-        onTap: (setval){
-          setState(() {
-            _SelectedIndex=setval;
-          });
-        },
-      ),
+    final bool displayMobileLayout = MediaQuery.of(context).size.width < 600;
+    return Row(
+      children: [
+        if (!displayMobileLayout)
+          const Drawer_Info(),
+        VerticalDivider(
+          width: 1,
+          thickness: 1,
+        ),
+        Expanded(
+          child: Scaffold(
+              drawer: displayMobileLayout
+                  ? const Drawer_Info()
+                  : null,
+
+            body: _page[_SelectedIndex],
+              bottomNavigationBar: ConvexAppBar(
+              backgroundColor: Colors.cyan,
+              activeColor: Colors.white,
+              style: TabStyle.reactCircle,
+              items:[
+                TabItem(icon: Icon(Icons.dashboard,color: Colors.red,),title: "DashBoard",),
+                TabItem(icon: Icon(Icons.search,color: Colors.deepOrange,),title: "Search",),
+                TabItem(icon: Icon(Icons.list_alt,color: Colors.blue,),title: "StudentList",),
+                TabItem(icon: Icon(Icons.supervised_user_circle,color: Colors.cyanAccent,),title: "Profile",)
+                 ],
+              onTap: (setval){
+                  setState(() {
+                  _SelectedIndex=setval;
+                  });
+              },
+              )
+            ),
+          ),
+      ],
     );
   }
 }
 
 class Drawer_Info extends StatelessWidget {
+  // const AppDrawer({@required this.permanentlyDisplay, Key key})
+  //     : super(key: key);
   const Drawer_Info({Key? key}) : super(key: key);
 
   @override
@@ -104,7 +124,7 @@ class Drawer_Info extends StatelessWidget {
         child: Container(
           color:Colors.cyan[50],
           child: ListView(
-              scrollDirection: Axis.vertical, children: <Widget>[
+              children: <Widget>[
             Container(
                 height: 120,
                 alignment: Alignment.topLeft,
