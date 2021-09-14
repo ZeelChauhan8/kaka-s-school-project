@@ -1,0 +1,40 @@
+{
+  "Student":[
+    {
+      "admission_no": "1",
+      "roll_no": "1",
+      "name": "Zeel chauhan",
+      "class": "LKG",
+      "father": "Ajay",
+      "dob":"29th Dec 2000",
+      "gender": "Male"
+    },
+    {
+      "admission_no": "2",
+      "roll_no": "3",
+      "name": "Ram Patno",
+      "class": "LKG",
+      "father": "Sagar",
+      "dob":"20th Sep 2000",
+      "gender": "Male"
+    },
+    {
+      "admission_no": "3",
+      "roll_no": "8",
+      "name": "Sonal chauhan",
+      "class": "LKG",
+      "father": "Ajay",
+      "dob":"28th May 1999",
+      "gender": "Female"
+    },
+    {
+      "admission_no": "4",
+      "roll_no": "1",
+      "name": "Sohan chauhan",
+      "class": "LKG",
+      "father": "Rohan",
+      "dob":"20th Dec 1998",
+      "gender": "Male"
+    }
+  ]
+}
